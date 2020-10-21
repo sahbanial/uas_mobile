@@ -1,12 +1,13 @@
 import React from 'react';
 import Home from '@containers/Home';
+import PageDetails from '@containers/Details/PageDetails';
 import {Image} from 'react-native';
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 import {createBottomTabNavigator} from 'react-navigation-tabs';
 import Images from '@config/Images';
 import {scale} from 'react-native-size-matters';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
+import {Colors} from 'react-native/Libraries/NewAppScreen';
 
 const icons = {
   Home: Images.icons.home,
@@ -23,7 +24,7 @@ const AppNavigator = createBottomTabNavigator(
       },
     },
     News: {
-      screen: Home,
+      screen: PageDetails,
       navigationOptions: {
         header: null,
       },

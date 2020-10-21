@@ -17,6 +17,21 @@ import {Linking} from 'react-native';
 import CardHome from '../../components/CardHome';
 import Box from '@components/Box';
 
+const RightMenuItem = ({title, image}) => {
+  return (
+    <TouchableOpacity style={[styles.emailContainer, tailwind('mt-2')]}>
+      {image && (
+        <Image
+          source={image}
+          style={{height: scale(15), width: scale(15)}}
+          tintColor={Colors.primary}
+        />
+      )}
+      <Text style={tailwind('text-sm')}>{title}</Text>
+    </TouchableOpacity>
+  );
+};
+
 export default function Home() {
   return (
     <View style={{flex: 1}}>
@@ -27,15 +42,7 @@ export default function Home() {
           start={{x: 1, y: 0}}
           end={{x: 0, y: 0}}
           style={styles.linearGradient}>
-          <View>
-            <View style={styles.options}>
-              <Box flexDirection="row" justifyContent="center">
-                <CardHome name="UAS" />
-                <CardHome name="ISIET" />
-                <CardHome name="FSEG" />
-              </Box>
-            </View>
-          </View>
+          <View></View>
           <Box flexDirection="row" marginTop="m">
             <View style={styles.imageContainer}>
               <Image
@@ -60,34 +67,47 @@ export default function Home() {
         <ImageBackground
           source={Images.maps}
           style={{
-            height: scale(400),
+            height: scale(500),
             width: scale(350),
             marginTop: scale(-55),
           }}>
-          <View style={tailwind('mt-20')}>
-            <TouchableOpacity
-              style={styles.telContainer}
-              onPress={() => {
-                Linking.openURL(`tel:+216 71 336 023`);
-              }}>
-              <Image
-                source={Images.icons.phone}
-                style={{height: scale(15), width: scale(15)}}
-                tintColor={Colors.primary}
-              />
-              <Text style={tailwind('text-sm')}>+216 71 336 023</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={[styles.emailContainer, tailwind('mt-2')]}
-              onPress={() => Linking.openURL('mailto:contact@uas.ens.tn')}>
-              <Image
-                source={Images.icons.email}
-                style={{height: scale(15), width: scale(15)}}
-                tintColor={Colors.primary}
-              />
-              <Text style={tailwind('text-sm')}>contact@uas.ens.tn</Text>
-            </TouchableOpacity>
-          </View>
+          <Box style={{backgroundColor: 'rgba(0,0,0,0.3)', flex: 1}}>
+            <View style={tailwind('mt-20')}>
+              <RightMenuItem title="UAS" />
+              <RightMenuItem title="FSEG" />
+              <RightMenuItem title="ESIET" />
+            </View>
+            <Box
+              marginTop="xl"
+              flexDirection="row"
+              justifyContent="space-between"
+              style={styles.bottomContainer}>
+              <TouchableOpacity
+                style={styles.telContainer}
+                onPress={() => {
+                  Linking.openURL(`tel:+216 71 336 023`);
+                }}>
+                <Image
+                  source={Images.icons.phone}
+                  style={{height: scale(15), width: scale(15)}}
+                  tintColor={Colors.primary}
+                />
+                <Text style={tailwind('text-sm')}>+216 71 336 023</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.emailContainer2}
+                onPress={() => {
+                  Linking.openURL(`tel:+216 71 336 023`);
+                }}>
+                <Image
+                  source={Images.icons.email}
+                  style={{height: scale(15), width: scale(15)}}
+                  tintColor={Colors.primary}
+                />
+                <Text style={tailwind('text-sm')}>contact@uas.com.tn</Text>
+              </TouchableOpacity>
+            </Box>
+          </Box>
         </ImageBackground>
       </View>
     </View>
@@ -95,7 +115,7 @@ export default function Home() {
 }
 var styles = StyleSheet.create({
   linearGradient: {
-    height: scale(300),
+    height: scale(200),
     borderBottomRightRadius: scale(60),
     borderBottomLeftRadius: scale(60),
     padding: scale(10),
@@ -133,9 +153,24 @@ var styles = StyleSheet.create({
     borderLeftColor: Colors.primary,
     borderLeftWidth: scale(5),
   },
-  emailContainer: {
+  emailContainer2: {
     backgroundColor: 'white',
     width: scale(170),
+    borderTopLeftRadius: scale(22),
+    borderBottomLeftRadius: scale(22),
+    height: scale(40),
+    elevation: 3,
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
+    //borderLeftColor: Colors.primary,
+    borderRightColor: Colors.primary,
+    //borderLeftWidth: scale(5),
+    borderRightWidth: scale(5),
+  },
+  emailContainer: {
+    backgroundColor: 'white',
+    width: scale(100),
     borderTopRightRadius: scale(22),
     borderBottomRightRadius: scale(22),
     height: scale(40),
@@ -147,4 +182,7 @@ var styles = StyleSheet.create({
     borderLeftWidth: scale(5),
   },
   options: {},
+  bottomContainer: {
+    marginTop: scale(180),
+  },
 });

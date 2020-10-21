@@ -11,7 +11,8 @@ const palette = {
   greenDark: '#0A906E',
 
   black: '#0B0B0B',
-  white: '#F0F2F3',
+  white: '#FFF',
+  gray: '#f1f1f1',
 };
 
 const theme = createTheme({
@@ -21,9 +22,10 @@ const theme = createTheme({
     black: palette.black,
     white: palette.white,
     primary: palette.primary,
+    gray: palette.gray,
   },
   spacing: {
-    xs:6,
+    xs: 6,
     s: 8,
     m: 16,
     l: 24,
@@ -34,7 +36,6 @@ const theme = createTheme({
     tablet: 768,
   },
   textVariants: {
-    
     header: {
       fontFamily: 'ShopifySans-Bold',
       fontWeight: 'bold',
@@ -49,7 +50,7 @@ const theme = createTheme({
       lineHeight: 36,
       color: 'black',
     },
-    medium:{
+    medium: {
       fontFamily: 'ShopifySans-SemiBold',
       fontWeight: '600',
       fontSize: 17,
