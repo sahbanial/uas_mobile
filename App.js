@@ -13,14 +13,23 @@ import Home from '@containers/Home';
 import {NavigationContainer} from '@react-navigation/native';
 import Router from '@navigation/Router';
 import {ThemeProvider} from '@shopify/restyle';
-import theme from "@config/Theme"
+import theme from '@config/Theme';
+import BottomNavBar from '@components/BottomNavBar';
+import {NavigationProvider} from 'context/navigationContext';
+import {ApolloProvider} from 'react-apollo';
+import client from "@config/ApolloClient"
 const App: () => React$Node = () => {
   return (
-    <ThemeProvider theme={theme}>
-      <Layout>
-        <Router />
-      </Layout>
+    <ApolloProvider client={client}>  
+<ThemeProvider theme={theme}>
+      <NavigationProvider>
+        <Layout>
+          <Router />
+        </Layout>
+      </NavigationProvider>
     </ThemeProvider>
+    </ApolloProvider>
+    
   );
 };
 

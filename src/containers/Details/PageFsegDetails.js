@@ -15,22 +15,52 @@ import {scale} from 'react-native-size-matters';
 import data from '@data/data.json';
 import Images from '@config/Images';
 import {WIDTH} from '@config/Constant';
+import {Badge} from 'react-native-paper';
+import BottomNavBar from '@components/BottomNavBar';
 
 const FilItem = ({title}) => (
   <Box padding="m" borderBottomWidth={1} borderColor="gray">
-    <Text>{title}</Text>
+    <Text color="black">{title}</Text>
+  </Box>
+);
+const FilItemInscription = ({title, index}) => (
+  <Box
+    padding="m"
+    borderBottomWidth={1}
+    borderColor="gray"
+    flexDirection="row"
+    alignItems="center">
+    <Badge style={{backgroundColor: Colors.primary}}>{index + 1}</Badge>
+    <Text color="black" marginLeft="s">
+      {title}
+    </Text>
   </Box>
 );
 
-const FirstRoute = () => <Box style={[styles.scene]} />;
-const SecondRoute = () => {
+const FirstRoute = () => {
   const [list, setList] = React.useState([]);
   React.useEffect(() => {
-    setList(data?.esiet);
+    setList(data?.preInscriptions);
   }, []);
   return (
     <Box style={[styles.scene]}>
-      <ScrollView>
+      <ScrollView contentContainerStyle={{paddingBottom: scale(100)}}>
+        {list?.map((fl, index) => (
+          <FilItemInscription title={`${fl}`} key={fl} index={index} />
+        ))}
+      </ScrollView>
+    </Box>
+  );
+};
+const SecondRoute = () => {
+  const [list, setList] = React.useState([]);
+  //const navigation
+  React.useEffect(() => {
+    setList(data?.fseg);
+  }, []);
+  return (
+    <Box style={[styles.scene]}>
+      <ScrollView contentContainerStyle={{paddingBottom: scale(100)}}>
         {list?.map((fl) => (
           <FilItem title={fl} key={fl} />
         ))}
@@ -39,11 +69,11 @@ const SecondRoute = () => {
   );
 };
 const initialLayout = {width: Dimensions.get('window').width};
-const PageDetails = () => {
+const PageDetails = (props) => {
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
     {key: 'first', title: 'Préinscription'},
-    {key: 'second', title: 'Felliére'},
+    {key: 'second', title: 'Fillière'},
   ]);
 
   const renderScene = SceneMap({
@@ -59,7 +89,9 @@ const PageDetails = () => {
           height: scale(150),
           width: WIDTH,
         }}>
-        <Header title="FSEG" opacity={1} />
+        <Box style={{backgroundColor: 'rgba(0,0,0,0.5)'}} height={scale(200)}>
+          <Header title="FSEG" opacity={1} />
+        </Box>
       </ImageBackground>
       <Box
         flex={1}
@@ -85,6 +117,7 @@ const PageDetails = () => {
           renderHeader={renderHeader}
         />
       </Box>
+      <BottomNavBar />
     </Box>
   );
 };

@@ -1,7 +1,6 @@
 import React from 'react';
 import {
   View,
-  Text,
   StyleSheet,
   Image,
   ImageBackground,
@@ -16,6 +15,9 @@ import Images from '@config/Images';
 import {Linking} from 'react-native';
 import CardHome from '../../components/CardHome';
 import Box from '@components/Box';
+import Text from '@components/Text';
+import BottomNavBar from '@components/BottomNavBar';
+import {WIDTH} from '@config/Constant';
 
 const RightMenuItem = ({title, image}) => {
   return (
@@ -43,11 +45,11 @@ export default function Home() {
           end={{x: 0, y: 0}}
           style={styles.linearGradient}>
           <View></View>
-          <Box flexDirection="row" marginTop="m">
+          <Box flexDirection="row" marginTop="m" justifyContent="center">
             <View style={styles.imageContainer}>
               <Image
                 source={Images.logo}
-                style={{height: scale(90), width: scale(90)}}
+                style={{height: scale(50), width: scale(50)}}
                 resizeMode="contain"
               />
             </View>
@@ -67,18 +69,22 @@ export default function Home() {
         <ImageBackground
           source={Images.maps}
           style={{
-            height: scale(500),
+            height: scale(600),
             width: scale(350),
             marginTop: scale(-55),
           }}>
-          <Box style={{backgroundColor: 'rgba(0,0,0,0.3)', flex: 1}}>
-            <View style={tailwind('mt-20')}>
-              <RightMenuItem title="UAS" />
-              <RightMenuItem title="FSEG" />
-              <RightMenuItem title="ESIET" />
-            </View>
+          <Box style={{backgroundColor: 'rgba(0,0,0,0.5)', flex: 1}}>
             <Box
-              marginTop="xl"
+              flexDirection="row"
+              justifyContent="center"
+              height={250}
+             
+              alignItems="center">
+              <Text textAlign="center" variant="header" color="yellow">
+                Rejoignez l’Université Arabe Des Sciences !
+              </Text>
+            </Box>
+            <Box
               flexDirection="row"
               justifyContent="space-between"
               style={styles.bottomContainer}>
@@ -110,20 +116,21 @@ export default function Home() {
           </Box>
         </ImageBackground>
       </View>
+      <BottomNavBar />
     </View>
   );
 }
 var styles = StyleSheet.create({
   linearGradient: {
-    height: scale(200),
-    borderBottomRightRadius: scale(60),
-    borderBottomLeftRadius: scale(60),
+    height: scale(120),
+    borderBottomRightRadius: scale(40),
+    borderBottomLeftRadius: scale(40),
     padding: scale(10),
     elevation: 3,
   },
   imageContainer: {
-    height: scale(100),
-    width: scale(100),
+    height: scale(60),
+    width: scale(60),
     padding: scale(10),
     backgroundColor: Colors.white,
     borderRadius: scale(10),
@@ -183,6 +190,9 @@ var styles = StyleSheet.create({
   },
   options: {},
   bottomContainer: {
-    marginTop: scale(180),
+    bottom: scale(110),
+    left: 0,
+    right: 0,
+    position: 'absolute',
   },
 });

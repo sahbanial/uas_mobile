@@ -2,6 +2,7 @@ export default {
   logo: require('@images/logo.png'),
   uas: require('@images/uas.jpg'),
   maps: require('@images/maps.png'),
+  
   icons: {
     home: require('@images/icons/home.png'),
     news: require('@images/icons/news.png'),

@@ -1,6 +1,7 @@
 import React from 'react';
 import Home from '@containers/Home';
-import PageDetails from '@containers/Details/PageDetails';
+import PageDetails from '@containers/Details/PageEsietDetails';
+import PageFsegDetails from '@containers/Details/PageFsegDetails';
 import {Image} from 'react-native';
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
@@ -15,7 +16,7 @@ const icons = {
   Evenement: Images.icons.event,
   Contact: Images.icons.contact,
 };
-const AppNavigator = createBottomTabNavigator(
+const AppNavigator = createStackNavigator(
   {
     Home: {
       screen: Home,
@@ -23,8 +24,14 @@ const AppNavigator = createBottomTabNavigator(
         header: null,
       },
     },
-    News: {
+    Esiet: {
       screen: PageDetails,
+      navigationOptions: {
+        header: null,
+      },
+    },
+    Fseg:{
+      screen: PageFsegDetails,
       navigationOptions: {
         header: null,
       },
@@ -40,27 +47,6 @@ const AppNavigator = createBottomTabNavigator(
       navigationOptions: {
         header: null,
       },
-    },
-  },
-  {
-    defaultNavigationOptions: ({navigation}) => ({
-      tabBarIcon: ({focused, horizontal, tintColor}) => {
-        const {routeName} = navigation.state;
-        let iconName = icons[routeName];
-
-        // You can return any component that you like here!
-        return (
-          <Image
-            source={iconName}
-            style={{height: scale(20), width: scale(20)}}
-            tintColor={tintColor}
-          />
-        );
-      },
-    }),
-    tabBarOptions: {
-      activeTintColor: Colors.primary,
-      inactiveTintColor: 'gray',
     },
   },
 );
