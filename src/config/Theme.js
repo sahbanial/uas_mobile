@@ -11,6 +11,7 @@ const palette = {
   black: '#0B0B0B',
   white: '#FFF',
   gray: '#f1f1f1',
+  gray1:"gray",
   primarySecond:"#192f6a",
   yellow:"#F4B400"
 };
@@ -24,7 +25,8 @@ const theme = createTheme({
     primary: palette.primary,
     gray: palette.gray,
     primarySecond:palette.primarySecond,
-    yellow:palette.yellow
+    yellow:palette.yellow,
+    gray1:palette.gray1
   },
   spacing: {
     xs: 6,
@@ -65,6 +67,11 @@ const theme = createTheme({
       lineHeight: 24,
       color: 'black',
     },
+    small:{
+      fontFamily: 'ShopifySans',
+      fontSize: 11,
+      color: 'black',
+    }
   },
 });
 

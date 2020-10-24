@@ -9,6 +9,7 @@ import {createBottomTabNavigator} from 'react-navigation-tabs';
 import Images from '@config/Images';
 import {scale} from 'react-native-size-matters';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
+import Formations from '@containers/formations';
 
 const icons = {
   Home: Images.icons.home,
@@ -32,6 +33,12 @@ const AppNavigator = createStackNavigator(
     },
     Fseg:{
       screen: PageFsegDetails,
+      navigationOptions: {
+        header: null,
+      },
+    },
+    Formations:{
+      screen: Formations,
       navigationOptions: {
         header: null,
       },

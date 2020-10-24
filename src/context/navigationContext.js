@@ -1,3 +1,4 @@
+import { loadToken } from 'api/auth';
 import React from 'react';
 const NavigationContext = React.createContext();
 const NavigationProvider = ({children}) => {
@@ -5,6 +6,9 @@ const NavigationProvider = ({children}) => {
   function toggleTab(tab) {
     setActiveTab(tab);
   }
+  React.useEffect(()=>{
+    loadToken();
+  },[])
   return (
     <NavigationContext.Provider
       value={{

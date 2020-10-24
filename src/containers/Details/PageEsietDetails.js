@@ -7,6 +7,8 @@ import {
   Dimensions,
   ScrollView,
   ImageBackground,
+  TouchableOpacity,
+  Linking,
 } from 'react-native';
 import {TabView, SceneMap, TabBar} from 'react-native-tab-view';
 import Header from '@components/Header';
@@ -42,12 +44,23 @@ const FirstRoute = () => {
   React.useEffect(() => {
     setList(data?.preInscriptions);
   }, []);
+  function goToWebSite(){
+    Linking.openURL("http://uas.ens.tn/preinscription-en-ligne/")
+  }
   return (
     <Box style={[styles.scene]}>
+      
       <ScrollView contentContainerStyle={{paddingBottom: scale(100)}}>
+       
+       
         {list?.map((fl, index) => (
           <FilItemInscription title={`${fl}`} key={fl} index={index} />
         ))}
+         <TouchableOpacity onPress={goToWebSite}>
+          <Box padding="s" borderColor="primary" borderWidth={2} margin="m" borderRadius={20}> 
+            <Text variant="medium" textAlign="center" color="primary" fontWeight="600">Lien Préinscription</Text>
+          </Box>
+        </TouchableOpacity>
       </ScrollView>
     </Box>
   );

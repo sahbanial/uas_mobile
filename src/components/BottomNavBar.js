@@ -46,6 +46,9 @@ const BottomNavBar = (props) => {
     if(tab ==tabs.fseg){
         navigation.navigate('Fseg',obj);
     }
+    if(tab ==tabs.form){
+        navigation.navigate("Formations");
+    }
    
   }
   return (

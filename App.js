@@ -17,19 +17,18 @@ import theme from '@config/Theme';
 import BottomNavBar from '@components/BottomNavBar';
 import {NavigationProvider} from 'context/navigationContext';
 import {ApolloProvider} from 'react-apollo';
-import client from "@config/ApolloClient"
+import client from '@config/ApolloClient';
 const App: () => React$Node = () => {
   return (
-    <ApolloProvider client={client}>  
-<ThemeProvider theme={theme}>
-      <NavigationProvider>
-        <Layout>
-          <Router />
-        </Layout>
-      </NavigationProvider>
-    </ThemeProvider>
+    <ApolloProvider client={client}>
+      <ThemeProvider theme={theme}>
+        <NavigationProvider>
+          <Layout>
+            <Router />
+          </Layout>
+        </NavigationProvider>
+      </ThemeProvider>
     </ApolloProvider>
-    
   );
 };
 
