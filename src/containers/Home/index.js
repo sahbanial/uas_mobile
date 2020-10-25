@@ -103,14 +103,14 @@ export default function Home() {
               <TouchableOpacity
                 style={styles.emailContainer2}
                 onPress={() => {
-                  Linking.openURL(`tel:+216 71 336 023`);
+                  Linking.openURL(`mailto:contact@uas.ens.tn`);
                 }}>
                 <Image
                   source={Images.icons.email}
                   style={{height: scale(15), width: scale(15)}}
                   tintColor={Colors.primary}
                 />
-                <Text style={tailwind('text-sm')}>contact@uas.com.tn</Text>
+                <Text style={tailwind('text-sm')}>contact@uas.en.tn</Text>
               </TouchableOpacity>
             </Box>
           </Box>

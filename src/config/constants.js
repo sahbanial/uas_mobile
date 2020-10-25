@@ -1,7 +1,7 @@
 const isLocal = true;
 const PROTOCOL = isLocal ? 'http://' : 'http://';
 const WS_PROTOCOL = 'ws://';
-const HOST = isLocal ? '192.168.43.82:8001' : 'apilynkbooster.toolynk.fr:1993';
+const HOST = isLocal ? '192.168.0.141:8001' : 'apilynkbooster.toolynk.fr:1993';
 const WS_ENDPOINT = '/subscriptions';
 const GOOGLE_API_KEY = 'AIzaSyDJqKQDJ5WtannWAwYWUbSPmNi5MDbaX48';
 const STRIPE_ENDPOINT = 'https://api.stripe.com/v1/tokens';

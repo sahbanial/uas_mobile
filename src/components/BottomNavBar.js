@@ -23,7 +23,7 @@ const TabItem = ({title, active, value, handleTab}) => {
         justifyContent="center"
         alignItems="center"
         borderRadius={33}
-        width={100}
+        width={90}
         margin="s"
         height={50}
         flexDirection="row">
@@ -56,17 +56,20 @@ const BottomNavBar = (props) => {
       flexDirection="row"
       justifyContent="space-between"
       backgroundColor="primary"
+      alignItems="center"
       style={styles.container}>
       <Box
         backgroundColor="primarySecond"
         flexDirection="row"
         justifyContent="center"
         alignItems="center"
+        height={scale(60)}
         padding="s">
+      
         <TouchableOpacity onPress={() => navigation?.navigate('Home')}>
           <Image
             source={Images.icons.home}
-            style={{height: 30, width: 30}}
+            style={{height: scale(30), width: scale(30)}}
             tintColor={'#fff'}
           />
         </TouchableOpacity>
