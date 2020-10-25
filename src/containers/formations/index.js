@@ -30,34 +30,35 @@ const shadowOpt = {
 
   style: {marginVertical: 5},
 };
-const FormItem = ({name,photoUrl,description}) => (
-  
-    <Box
-      flexDirection="row"
-      alignItems="center"
-      padding="s"
-      borderBottomWidth={1}
-      borderColor="gray"
-      style={styles.shadow}
-      elevation={1}
-      margin="s">
-      <Box>
-        <Image
-          source={{
-            uri: photoUrl ? photoUrl : "https://iatranshumanisme.com/wp-content/uploads/2017/12/formation-logo.png"}}
-          style={{height: 70, width: 70}}
-        />
-      </Box>
-      <Box marginLeft="s" width={scale(230)}>
-        <Text color="black" variant="medium">
-          {name}
-        </Text>
-        <Text textAlign="justify" variant="small" color="gray1">
-         {description}
-        </Text>
-      </Box>
+const FormItem = ({name, photoUrl, description}) => (
+  <Box
+    flexDirection="row"
+    alignItems="center"
+    padding="s"
+    borderBottomWidth={1}
+    borderColor="gray"
+    style={styles.shadow}
+    elevation={1}
+    margin="s">
+    <Box>
+      <Image
+        source={{
+          uri: photoUrl
+            ? photoUrl
+            : 'https://iatranshumanisme.com/wp-content/uploads/2017/12/formation-logo.png',
+        }}
+        style={{height: 70, width: 70}}
+      />
     </Box>
-
+    <Box marginLeft="s" width={scale(230)}>
+      <Text color="black" variant="medium">
+        {name}
+      </Text>
+      <Text textAlign="justify" variant="small" color="gray1">
+        {description}
+      </Text>
+    </Box>
+  </Box>
 );
 const QUERY = gql`
   query {
@@ -72,7 +73,13 @@ const QUERY = gql`
 const Formations = (props) => {
   const [index, setIndex] = React.useState(0);
   const {data, loading, ...rest} = useQuery(QUERY);
-
+  function renderEmpty() {
+    return (
+      <Box flexDirection="row" alignItems="center" justifyContent="center"  marginTop="l">
+        <Text variant="body" textAlign="center" color="gray1">List vide</Text>
+      </Box>
+    );
+  }
   return (
     <Box flex={1} backgroundColor="mainBackground">
       <ImageBackground
@@ -95,11 +102,13 @@ const Formations = (props) => {
             List de certification des étudiants de L'UAS
           </Text>
           <Box>
-            <ScrollView contentContainerStyle={{
-              paddingBottom:scale(100)
-            }}>
-              {data?.getFormations?.map((fr,index) => (
-                <FormItem {...fr} key={index}/>
+            {data?.getFormations?.length == 0 && renderEmpty()}
+            <ScrollView
+              contentContainerStyle={{
+                paddingBottom: scale(100),
+              }}>
+              {data?.getFormations?.map((fr, index) => (
+                <FormItem {...fr} key={index} />
               ))}
             </ScrollView>
           </Box>
